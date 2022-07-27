@@ -24,7 +24,9 @@ class PubSub {
   }
 
   // 移除
-  remove(event, callback) {}
+  remove(event, callback) {
+    // TODO:待实现
+  }
 }
 
 const ps = new PubSub();
