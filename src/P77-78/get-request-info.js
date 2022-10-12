@@ -12,8 +12,18 @@ const server = http
     let urlObj = url.parse(req.url, true);
     console.log(urlObj);
     console.log(req.method);
-    console.log(req.headers);
     console.log(req.httpVersion);
+    console.log(req.headers);
+
+    // 获取请求体
+    // 使用curl模拟客户端发起 POST 请求： curl -v -X POST -d "'name':'lg'" http://localhost:1234/
+    let arr = [];
+    req.on('data', (data) => {
+      arr.push(data);
+    });
+    req.on('end', () => {
+      console.log(Buffer.concat(arr).toString());
+    });
   })
   .listen(1234, () => {
     console.log('server running at 1234');
