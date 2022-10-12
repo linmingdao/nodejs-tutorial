@@ -4,9 +4,8 @@ const querystring = require('querystring');
 
 http
   .createServer((req, res) => {
-    console.log('请求进来了');
     const { pathname, query } = url.parse(req.url);
-    console.log(pathname, '-----', query);
+    console.log('请求进来了：', pathname, '-----', query);
 
     const arr = [];
     req.on('data', (chunk) => {
