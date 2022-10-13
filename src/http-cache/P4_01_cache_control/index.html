@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTTP Cache</title>
+  </head>
+  <body>
+    <h1>强制缓存 使用 http1.0 的 【expires】 实现</h1>
+    <img width="100" src="./img/01.png" alt="01.png" />
+    <h1>强制缓存 使用 http1.1 的 【cache-control】 实现</h1>
+    <img width="100" src="./img/02.png" alt="02.png" />
+    <h1>协商缓存 使用 http1.1 的 【cache-control】 实现</h1>
+    <ul>
+      <li>响应头设置 cache-control: no-cache 启用协商缓存</li>
+      <li>响应头设置 last-modified 告诉客户端资源最近修改的时间</li>
+      <li>
+        请求头会通过 if-modified-since 告诉服务端已经缓存资源最近修改的时间
+      </li>
+      <li>
+        服务端获取请求的资源，获取 if-modified-since 和
+        资源最近修改的时间，来判断客户端缓存的资源是否过期，没有过期响应304，过期则响应最新的资源和通过
+        last-modified 再次告知资源最近的更新时间
+      </li>
+    </ul>
+    <img width="100" src="./img/03.png" alt="03.png" />
+  </body>
+</html>
